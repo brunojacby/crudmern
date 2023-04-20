@@ -21,13 +21,13 @@ function CreatePost() {
         })
     };
 
-    function createPost (event) {
-        event.preventDefault();
+    const createPost = (e) => {
+        e.preventDefault();
 
         axios
             .post("/create", post)
             .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+            .catch();
 
        navigate("posts");
     };
@@ -43,16 +43,14 @@ function CreatePost() {
                         value={post.title}
                         placeholder="Title" 
                         style={{marginBottom: "1rem"}}
-                        onChange={handleChange}
-                        required
+                        onChange={handleChange}                        
                     /> 
                     <Form.Control 
                         name="description" 
                         value={post.description}
                         placeholder="Description" 
                         style={{marginBottom: "1rem"}}
-                        onChange={handleChange}
-                        required
+                        onChange={handleChange}                        
                     /> 
                 </Form.Group>
                 <Button 
@@ -66,7 +64,7 @@ function CreatePost() {
             <Button 
                 variant="outline-dark"
                 style={{width:"100%"}}
-                onClick={()=> navigate(-1)}
+                onClick={()=> navigate("posts")}
             >
                 ALL POSTS
             </Button>
